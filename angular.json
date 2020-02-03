@@ -25,10 +25,18 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "ignore": [
+                  "**/styles/**/*"
+                ],
+                "output": "/assets/"
+              }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/theme.less",
+              "src/global.scss",
             ],
             "scripts": []
           },
