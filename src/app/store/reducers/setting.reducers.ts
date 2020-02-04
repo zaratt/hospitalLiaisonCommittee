@@ -1,11 +1,11 @@
 import { initialSettingState, ISettingState } from '../state/setting.state';
 import { SettingActions, ESettingActions } from '../actions/setting.action';
 
-export const settingReducers = (
+export function settingReducers(
   state = initialSettingState,
   action: SettingActions
-): ISettingState => {
-  switch (action.type){
+): ISettingState {
+  switch (action.type) {
     case ESettingActions.SET_SETTING: {
       const key = Object.keys(action.payload)[0];
       window.localStorage.setItem(`app.settings.${key}`, action.payload[key]);
@@ -17,4 +17,4 @@ export const settingReducers = (
     default:
       return state;
   }
-}
+};
