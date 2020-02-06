@@ -14,12 +14,12 @@ import { IAppState } from 'src/app/store/state/app.state';
   styleUrls: ['./menu-left.component.scss'],
 })
 export class MenuLeftComponent implements OnInit {
-  @Input() isMenuCollapsed: boolean = false
-  isLightTheme: boolean
-  isSettingsOpen: boolean
-  isMobileView: boolean
-  menuData: any[]
-  menuDataActivated: any[]
+  @Input() isMenuCollapsed: boolean = false;
+  isLightTheme: boolean;
+  isSettingsOpen: boolean;
+  isMobileView: boolean;
+  menuData: any[];
+  menuDataActivated: any[];
 
   constructor(
     private menuService: MenuService,
@@ -41,18 +41,18 @@ export class MenuLeftComponent implements OnInit {
     this.router.events
       .pipe(filter(event => event instanceof NavigationStart))
       .subscribe((event: NavigationStart) => {
-        this.activateMenu(event.url ? event.url : null)
-      })
+        this.activateMenu(event.url ? event.url : null);
+      });
   }
 
   activateMenu(url: any, menuData = this.menuData) {
-    menuData = JSON.parse(JSON.stringify(menuData))
-    const pathWithSelection = this.getPath({ url: url }, menuData, (entry: any) => entry, 'url')
+    menuData = JSON.parse(JSON.stringify(menuData));
+    const pathWithSelection = this.getPath({ url: url }, menuData, (entry: any) => entry, 'url');
     if (pathWithSelection) {
-      pathWithSelection.pop().selected = true
-      _.each(pathWithSelection, (parent: any) => (parent.open = true))
+      pathWithSelection.pop().selected = true;
+      _.each(pathWithSelection, (parent: any) => (parent.open = true));
     }
-    this.menuDataActivated = menuData.slice()
+    this.menuDataActivated = menuData.slice();
   }
 
   getPath(

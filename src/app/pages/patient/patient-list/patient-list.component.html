@@ -1,1 +1,100 @@
-<p>patient-list works!</p>
+<div class="operate">
+  <button nz-button [nzType]="'primary'" (click)="showModal()">
+    <i nz-icon nzType="user-add" nzTheme="outline"></i>
+    Add new patient
+  </button>
+
+</div>
+<!-- modal window -->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Modal Title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading">
+  <p>Modal Content</p>
+</nz-modal>
+<!-- modal window -->
+<nz-modal [(nzVisible)]="isEdit" nzTitle="Edit patient" (nzOnCancel)="handleCancelEdit()" (nzOnOk)="handleOkEdit()"
+  [nzOkLoading]="isOkLoadingEdit">
+  <form nz-form [formGroup]="validateForm"  nz-form [nzLayout]="'inline'" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input name!">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="userName" placeholder="Patient name" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input case type">
+        <nz-input-group nzPrefixIcon="medicine-box">
+          <input type="text" nz-input formControlName="password" placeholder="Case type" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="bank">
+          <input type="text" nz-input formControlName="password" placeholder="Hospital" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="bank">
+          <input type="text" nz-input formControlName="password" placeholder="Doctor" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <!-- <nz-form-item>
+      <nz-form-control>
+        <label nz-checkbox formControlName="remember">
+          <span>Remember me</span>
+        </label>
+        <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+        <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+        Or
+        <a>register now!</a>
+      </nz-form-control>
+    </nz-form-item> -->
+  </form>
+</nz-modal>
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Group</th>
+      <th>Case type</th>
+      <th>Hospital</th>
+      <th>Doctor</th>
+      <th>Cooperative</th>
+      <th>HLC-7</th>
+      <th>Status</th>
+      <th>HLC assigned</th>
+      <th>PVG assigned</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.group }}</td>
+      <td>{{ data.caseType }}</td>
+      <td>{{ data.hospital }}</td>
+      <td>{{ data.doctor }}</td>
+      <td>{{ data.coop }}</td>
+      <td>{{ data.status }}</td>
+      <td>{{ data.hlc7 }}</td>
+      <td>{{ data.hlc }}</td>
+      <td>{{ data.pvg }}</td>
+      <td>
+        <button nz-button nzType="link" (click)="showModalEdit()"><i nz-icon nzType="edit"></i> Edit</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button
+        nz-popconfirm
+        nzPopconfirmTitle="Are you sure delete this task?"
+        (nzOnConfirm)="confirm()"
+        (nzOnCancel)="cancel()"
+        nzPopconfirmPlacement="topLeft"
+         nz-button nzType="link"><i nz-icon nzType="delete"></i> Delete</button
+          >
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

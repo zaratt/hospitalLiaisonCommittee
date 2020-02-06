@@ -24,6 +24,7 @@
     "@ngrx/store": "^8.6.0",
     "bootstrap-css-only": "^4.4.1",
     "ng-zorro-antd": "^8.5.2",
+    "ngx-perfect-scrollbar": "^8.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
