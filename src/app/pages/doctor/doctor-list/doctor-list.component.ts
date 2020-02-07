@@ -1,25 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { NzMessageService } from 'ng-zorro-antd';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 declare var require: any;
 const data: any = require('./data.json');
 
 @Component({
-  selector: 'app-patient-list',
-  templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.scss']
+  selector: 'app-doctor-list',
+  templateUrl: './doctor-list.component.html',
+  styleUrls: ['./doctor-list.component.scss']
 })
-export class PatientListComponent implements OnInit {
+export class DoctorListComponent implements OnInit {
   listOfData = data.data;
   isVisible = false;
   isEdit = false;
   isOkLoading = false;
   isOkLoadingEdit = false;
   validateForm: FormGroup;
-  selectedValue = null;
-  listOfOption: Array<{ value: string; text: string }> = [];
-  nzFilterOption = () => true;
 
   submitForm(): void {
     // tslint:disable-next-line: forin
@@ -28,10 +23,7 @@ export class PatientListComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
   }
-  constructor(
-    private fb: FormBuilder,
-    private httpClient: HttpClient,
-    private nzMessageService: NzMessageService) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.validateForm = this.fb.group({
@@ -68,26 +60,7 @@ export class PatientListComponent implements OnInit {
   handleCancelEdit(): void {
     this.isEdit = false;
   }
-  search(value: string): void {
-    this.httpClient
-      .jsonp<{ result: Array<[string, string]> }>(`https://suggest.taobao.com/sug?code=utf-8&q=${value}`, 'callback')
-      .subscribe(data => {
-        const listOfOption: Array<{ value: string; text: string }> = [];
-        data.result.forEach(item => {
-          listOfOption.push({
-            value: item[0],
-            text: item[0]
-          });
-        });
-        this.listOfOption = listOfOption;
-      });
-  }
 
-  cancel(): void {
-    this.nzMessageService.info('Delete cancelled');
-  }
 
-  confirm(): void {
-    this.nzMessageService.info('Delete confirmed');
-  }
+
 }

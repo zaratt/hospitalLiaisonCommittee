@@ -4,69 +4,47 @@ export const getLeftMenuData: any[] = [
   //   key: 'settings',
   //   icon: 'icmn icmn-cog utils__spin-delayed--pseudo-selector',
   // },
-  // {
-  //   title: 'Documentation',
-  //   key: 'documentation',
-  //   url: 'https://docs.cleanuitemplate.com',
-  //   target: '_blank',
-  //   icon: 'icmn icmn-books',
-  // },
-  // {
-  //   divider: true,
-  // },
-  // {
-  //   title: 'Dashboard Alpha',
-  //   key: 'dashboardAlpha',
-  //   url: '/dashboard/alpha',
-  //   icon: 'icmn icmn-home',
-  // },
+  {
+    title: 'Dashboard',
+    key: 'dashboard',
+    url: '/dashboard',
+    icon: 'icmn icmn-home',
+  },
+  {
+    divider: true,
+  },
+  {
+    title: 'Doctor',
+    key: 'doctor',
+    url: '/doctor',
+    icon: 'icmn icmn-plus',
+  },
+  {
+    divider: true,
+  },
+
   {
     title: 'Patient',
     key: 'patient',
+    icon: 'icmn icmn-accessibility',
     children: [
       {
         title: 'List',
-        key: 'dashboard',
-        url: '/admin/list',
+        key: 'Patient',
+        url: '/patient/list',
         pro: true,
       },
-      // {
-      //   title: 'Products Catalog',
-      //   key: 'productsCatalog',
-      //   url: '/admin/all-subscriptions',
-      //   pro: true,
-      // },
-      // {
-      //   title: 'Products Details',
-      //   key: 'productsDetails',
-      //   url: '/ecommerce/product-details',
-      //   pro: true,
-      // },
-      // {
-      //   title: 'Products Edit',
-      //   key: 'productsEdit',
-      //   url: '/ecommerce/product-edit',
-      //   pro: true,
-      // },
-      // {
-      //   title: 'Products List',
-      //   key: 'productsList',
-      //   url: '/ecommerce/products-list',
-      //   pro: true,
-      // },
-      // {
-      //   title: 'Orders',
-      //   key: 'orders',
-      //   url: '/ecommerce/orders',
-      //   pro: true,
-      // },
-      // {
-      //   title: 'Cart',
-      //   key: 'cart',
-      //   url: '/ecommerce/cart',
-      //   pro: true,
-      // },
+
     ],
+  },
+  {
+    divider: true,
+  },
+  {
+    title: 'Adminstration',
+    key: 'admin',
+    url: '/admin',
+    icon: 'icmn icmn-office',
   },
 ]
 export const getTopMenuData: any[] = [

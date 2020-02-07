@@ -6,6 +6,7 @@ import { PatientListComponent } from './patient-list/patient-list.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { SharedModule } from '../../shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PatientRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
     SharedModule
   ]
 })

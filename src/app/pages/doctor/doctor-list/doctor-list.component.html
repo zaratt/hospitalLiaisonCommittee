@@ -1,0 +1,271 @@
+<div class="operate">
+  <button nz-button [nzType]="'primary'" (click)="showModal()">
+    <i nz-icon nzType="user-add" nzTheme="outline"></i>
+    Add new doctor
+  </button>
+
+</div>
+<!-- modal window -->
+<nz-modal [(nzVisible)]="isVisible"nzWidth="720" nzTitle="Health-care professional" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  [nzOkLoading]="isOkLoading">
+  <form nz-form [formGroup]="validateForm" nz-form (ngSubmit)="submitForm()">
+    <div nz-row [nzGutter]="28">
+      <div nz-col [nzSpan]="7">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input name!">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="userName" placeholder="First name" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="5">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input case type">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="password" placeholder="Middle initial" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="7">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input hospital">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="password" placeholder="Last name" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="5">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input hospital">
+          <nz-input-group nzPrefixIcon="bank">
+            <input type="text" nz-input formControlName="password" placeholder="Degree" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="28">
+    <div nz-col [nzSpan]="12">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group [nzPrefix]="student">
+          <input type="text" nz-input formControlName="password" placeholder="Speciality" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="12">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group [nzPrefix]="student">
+          <input type="text" nz-input formControlName="password" placeholder="Subspeciality/Special interest" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    </div>
+  </div>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group [nzPrefix]="student">
+          <input type="text" nz-input formControlName="password" placeholder="Title/Postion" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="home">
+          <input type="text" nz-input formControlName="password" placeholder="Hospital/Institution" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="home">
+          <input type="text" nz-input formControlName="password" placeholder="Hospital address" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row [nzGutter]="28">
+      <div nz-col [nzSpan]="12">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="phone">
+          <input type="text" nz-input formControlName="password" placeholder="Office telephone" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="12">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="phone">
+          <input type="text" nz-input formControlName="password" placeholder="Mobile telephone" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    </div>
+    </div>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="mail">
+          <input type="text" nz-input formControlName="password" placeholder="Email address or additional telepone" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>
+<ng-template #student><i class="fa fa-graduation-cap" aria-hidden="true"></i></ng-template>
+<!-- modal window -->
+<nz-modal [(nzVisible)]="isEdit" nzTitle="Edit health-care professional" (nzOnCancel)="handleCancelEdit()" (nzOnOk)="handleOkEdit()"
+  [nzOkLoading]="isOkLoadingEdit">
+  <form nz-form [formGroup]="validateForm" nz-form (ngSubmit)="submitForm()">
+    <div nz-row [nzGutter]="28">
+      <div nz-col [nzSpan]="7">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input name!">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="userName" placeholder="First name" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="5">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input case type">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="password" placeholder="Middle initial" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="7">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input hospital">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="password" placeholder="Last name" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="5">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input hospital">
+          <nz-input-group nzPrefixIcon="bank">
+            <input type="text" nz-input formControlName="password" placeholder="Degree" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="28">
+    <div nz-col [nzSpan]="12">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group [nzPrefix]="student">
+          <input type="text" nz-input formControlName="password" placeholder="Speciality" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="12">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group [nzPrefix]="student">
+          <input type="text" nz-input formControlName="password" placeholder="Subspeciality/Special interest" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    </div>
+  </div>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group [nzPrefix]="student">
+          <input type="text" nz-input formControlName="password" placeholder="Title/Postion" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="home">
+          <input type="text" nz-input formControlName="password" placeholder="Hospital/Institution" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="home">
+          <input type="text" nz-input formControlName="password" placeholder="Hospital address" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row [nzGutter]="28">
+      <div nz-col [nzSpan]="12">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="phone">
+          <input type="text" nz-input formControlName="password" placeholder="Office telephone" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    </div>
+    <div nz-col [nzSpan]="12">
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="phone">
+          <input type="text" nz-input formControlName="password" placeholder="Mobile telephone" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    </div>
+    </div>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="mail">
+          <input type="text" nz-input formControlName="password" placeholder="Email address or additional telepone" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>
+<nz-table #basicTable [nzData]="listOfData">
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th>Speciality</th>
+
+      <th>Hospital/Institution</th>
+
+      <th>Office tel</th>
+      <th>Mobile tel</th>
+
+      <th>E-mail</th>
+      <th>Non emergency</th>
+      <th>Emergency</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.title }} &nbsp;{{ data.fname }} &nbsp; {{ data.lname }}</td>
+
+      <td>{{ data.subspecialty }}</td>
+
+      <td>{{ data.hospital }}</td>
+      <td>{{ data.officeTel }}</td>
+      <td>{{ data.mobileTel }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.nonemergency[0] }} &nbsp;{{ data.nonemergency[1] }}</td>
+      <td>{{ data.emergency[0] }}</td>
+      <td>{{ data.comments }}</td>
+      <td>
+        <button nz-button nzType="link" (click)="showModalEdit()"><i nz-icon nzType="edit"></i> Edit</button>
+        <nz-divider nzType="vertical"></nz-divider>
+        <button nz-button nzType="link"><i nz-icon nzType="delete"></i> Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

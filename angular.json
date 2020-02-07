@@ -35,6 +35,7 @@
               }
             ],
             "styles": [
+              "./node_modules/chartist/dist/chartist.css",
               "src/theme.less",
               "src/global.scss",
             ],

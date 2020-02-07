@@ -6,14 +6,135 @@
 
 </div>
 <!-- modal window -->
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Modal Title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Patient info" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
   [nzOkLoading]="isOkLoading">
-  <p>Modal Content</p>
+  <form nz-form [formGroup]="validateForm" nz-form (ngSubmit)="submitForm()">
+    <div nz-row [nzGutter]="28">
+      <div nz-col [nzSpan]="9">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input name!">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="userName" placeholder="First name" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="6">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input case type">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="password" placeholder="Middle initial" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="9">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input hospital">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="password" placeholder="Last name" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+    </div>
+    <div nz-row [nzGutter]="28">
+      <div nz-col [nzSpan]="16">
+        <nz-form-item>
+          <nz-form-label [nzSpan]="10" nzFor="email">Publisher standing</nz-form-label>
+          <nz-form-control nzErrorTip="Please input hospital">
+            <nz-switch  [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate">
+            </nz-switch>
+            <ng-template #checkedTemplate><i nz-icon nzType="check"></i></ng-template>
+            <ng-template #unCheckedTemplate><i nz-icon nzType="close"></i></ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row [nzGutter]="28">
+      <div nz-col [nzSpan]="12">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input hospital">
+            <nz-select
+            nzShowSearch
+            nzServerSearch
+            nzPlaceHolder="input search doctor"
+
+            [nzShowArrow]="false"
+            [nzFilterOption]="nzFilterOption"
+            (nzOnSearch)="search($event)"
+          >
+            <nz-option *ngFor="let o of listOfOption" [nzLabel]="o.text" [nzValue]="o.value"> </nz-option>
+          </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="12">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input hospital">
+            <nz-input-group [nzPrefix]="student">
+              <input type="text" nz-input formControlName="password" placeholder="Hospital" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group [nzPrefix]="student">
+          <input type="text" nz-input formControlName="password" placeholder="Title/Postion" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="home">
+          <input type="text" nz-input formControlName="password" placeholder="Hospital/Institution" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="home">
+          <input type="text" nz-input formControlName="password" placeholder="Hospital address" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row [nzGutter]="28">
+      <div nz-col [nzSpan]="12">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input hospital">
+            <nz-input-group nzPrefixIcon="phone">
+              <input type="text" nz-input formControlName="password" placeholder="Office telephone" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="12">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="Please input hospital">
+            <nz-input-group nzPrefixIcon="phone">
+              <input type="text" nz-input formControlName="password" placeholder="Mobile telephone" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input hospital">
+        <nz-input-group nzPrefixIcon="mail">
+          <input type="text" nz-input formControlName="password" placeholder="Email address or additional telepone" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
 </nz-modal>
+<ng-template #student><i class="fa fa-graduation-cap" aria-hidden="true"></i></ng-template>
 <!-- modal window -->
 <nz-modal [(nzVisible)]="isEdit" nzTitle="Edit patient" (nzOnCancel)="handleCancelEdit()" (nzOnOk)="handleOkEdit()"
   [nzOkLoading]="isOkLoadingEdit">
-  <form nz-form [formGroup]="validateForm"  nz-form [nzLayout]="'inline'" (ngSubmit)="submitForm()">
+  <form nz-form [formGroup]="validateForm" nz-form [nzLayout]="'inline'" (ngSubmit)="submitForm()">
     <nz-form-item>
       <nz-form-control nzErrorTip="Please input name!">
         <nz-input-group nzPrefixIcon="user">
@@ -86,14 +207,9 @@
       <td>
         <button nz-button nzType="link" (click)="showModalEdit()"><i nz-icon nzType="edit"></i> Edit</button>
         <nz-divider nzType="vertical"></nz-divider>
-        <button
-        nz-popconfirm
-        nzPopconfirmTitle="Are you sure delete this task?"
-        (nzOnConfirm)="confirm()"
-        (nzOnCancel)="cancel()"
-        nzPopconfirmPlacement="topLeft"
-         nz-button nzType="link"><i nz-icon nzType="delete"></i> Delete</button
-          >
+        <button nz-popconfirm nzPopconfirmTitle="Are you sure delete this task?" (nzOnConfirm)="confirm()"
+          (nzOnCancel)="cancel()" nzPopconfirmPlacement="topLeft" nz-button nzType="link"><i nz-icon
+            nzType="delete"></i> Delete</button>
       </td>
     </tr>
   </tbody>

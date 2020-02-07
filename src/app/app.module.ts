@@ -17,6 +17,7 @@ import { registerLocaleData } from '@angular/common';
 import { default as localeEn } from '@angular/common/locales/en';
 import { NZ_I18N, en_US as localeZorro, NZ_ICONS } from 'ng-zorro-antd';
 import { HttpClientModule } from '@angular/common/http';
+import { HlcUIModule } from './components/hlc-components/hlcui.module';
 const LOCALE_PROVIDERS = [
   { provide: LOCALE_ID, useValue: 'en' },
   { provide: NZ_I18N, useValue: localeZorro },
@@ -42,7 +43,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     HttpClientModule,
     StoreModule.forRoot(appReducers),
     StoreRouterConnectingModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HlcUIModule
   ],
   providers: [
     ...LOCALE_PROVIDERS,
