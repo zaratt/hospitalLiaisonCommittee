@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { of } from 'rxjs';\nexport class AppPreloader {\n  preload(route, load) {\n    return route.data && route.data.preload ? load() : of(null);\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import { DoctorRoutingModule } from './doctor-routing.module';
-import { DoctorListComponent } from './doctor-list/doctor-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
+import { DoctorRoutingModule } from './doctor-routing.module';
 
 
 @NgModule({
@@ -15,6 +15,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     DoctorRoutingModule,
     SharedModule,
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class DoctorModule { }

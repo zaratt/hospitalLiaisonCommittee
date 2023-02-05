@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { createSelector } from '@ngrx/store';\nconst selectSettingState = state => state.setting;\nexport const selectSetting = createSelector(selectSettingState, state => state.setting);","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

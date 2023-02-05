@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import { PatientRoutingModule } from './patient-routing.module';
-import { PatientListComponent } from './patient-list/patient-list.component';
-import { NzTableModule } from 'ng-zorro-antd/table';
-import { SharedModule } from '../../shared.module';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+import { SharedModule } from '../../shared.module';
+import { PatientListComponent } from './patient-list/patient-list.component';
+import { PatientRoutingModule } from './patient-routing.module';
 
 
 @NgModule({
@@ -19,6 +18,7 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
     HttpClientModule,
     HttpClientJsonpModule,
     SharedModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PatientModule { }

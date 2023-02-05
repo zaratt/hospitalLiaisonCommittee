@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PatientListComponent } from './patient-list/patient-list.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { LayoutsModule } from 'src/app/layouts/layouts.module';
+import { PatientListComponent } from './patient-list/patient-list.component';
 
 
 const routes: Routes = [
@@ -19,6 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [LayoutsModule, RouterModule.forChild(routes)],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   exports: [RouterModule]
 })
 export class PatientRoutingModule { }

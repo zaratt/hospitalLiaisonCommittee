@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { SharedModule } from '../../shared.module';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { FooterComponent } from './footer/footer.component';
 import { MenuLeftComponent } from './menu/menu-left/menu-left.component';
 import { MenuTopComponent } from './menu/menu-top/menu-top.component';
-import { SharedModule } from '../../shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FooterComponent } from './footer/footer.component';
-import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 const COMPONENTS = [
   MenuLeftComponent,
@@ -18,5 +18,6 @@ const COMPONENTS = [
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
   imports: [SharedModule, ReactiveFormsModule, PerfectScrollbarModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LayoutModule { }

@@ -1,13 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
-import { AppPreloader } from './app-routing-loader';
-import { Routes, RouterModule } from '@angular/router';
-import { SharedModule } from './shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { AppPreloader } from './app-routing-loader';
 import { LayoutsModule } from './layouts/layouts.module';
+import { SharedModule } from './shared.module';
 
 // layouts & notfound
 import { LayoutMainComponent } from './layouts/main/main.component';
@@ -38,7 +35,7 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
       }
-    //  { path: '**', component: NotFoundComponent, canActivate: [AuthGuard] },
+      //  { path: '**', component: NotFoundComponent, canActivate: [AuthGuard] },
     ],
   },
 ]
@@ -55,6 +52,7 @@ const routes: Routes = [
     }),
     LayoutsModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AppPreloader],
   exports: [RouterModule],
 })
